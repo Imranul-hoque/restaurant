@@ -7,7 +7,7 @@ import Image from "next/image";
 import SectionTitle from "@/components/section-title";
 import AnimatedSection from "@/components/animated-section";
 import { ShoppingCart, Plus, Minus, X, Loader } from "lucide-react";
-import { MenuItem } from "@/generated/prisma";
+import { MenuItem } from "../../../../prisma/generated/prisma";
 import { getMenus } from "@/actions/menu";
 import { toast } from "sonner";
 

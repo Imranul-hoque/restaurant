@@ -3,7 +3,7 @@
 import { db } from "@/lib/db";
 import { currentUser } from "@clerk/nextjs/server";
 import { getUser } from "./user";
-import { OrderStatus, Prisma } from "@/generated/prisma";
+import { OrderStatus } from "../../prisma/generated/prisma";
 import { OrderWithItemsAndUser } from "@/@types";
 import { revalidatePath } from "next/cache";
 
