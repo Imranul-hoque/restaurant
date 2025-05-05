@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+ 
+model User {
+  id          String   @id @default(uuid())
+  email     String   @unique
+  username  String
+  role      UserRole @default(CUSTOMER)
+  menuItems MenuItem[]
+  reservations Reservation[]
+  orders   Order[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model MenuItem {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  price       Float
+  category    String
+  image       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  orders      Order[]
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+model Order {
+  id        String      @id @default(uuid())
+  userId    String
+  user     User @relation(fields: [userId], references: [id])
+  items     MenuItem[]  // Many-to-many relation
+  total     Float
+  status    OrderStatus
+  date      DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Offer {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  startDate   DateTime
+  endDate     DateTime
+  image       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+enum OrderStatus {
+  Pending
+  Processing
+  Completed
+  Cancelled
+}
+
+model Reservation {
+  id        String   @id  @default(uuid())
+  userId    String
+  user      User @relation(fields: [userId], references: [id])
+  guests    Int
+  name      String
+  date      DateTime
+  time      String
+  occasion  String
+  phone     String
+  email     String
+  specialRequests     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BlogPost {
+  id        String      @id @default(uuid())
+  title     String
+  excerpt   String
+  date      DateTime
+  author    String
+  category  BlogCategory
+  image     String
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  date        DateTime
+  time        String
+  location    String
+  image       String
+  price       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+
+enum BlogCategory {
+  Seasonal
+  NonSeasonal
+}
+
+
+enum ReservationStatus {
+  Confirmed
+  Pending
+  Cancelled
+}
+
+
+
+enum UserRole {
+  ADMIN
+  CUSTOMER
+}
