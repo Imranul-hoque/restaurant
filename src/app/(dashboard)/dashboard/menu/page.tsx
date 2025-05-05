@@ -38,7 +38,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import UploadImage from "@/components/upload-image";
-import { MenuItem } from "../../../../../prisma/generated/prisma";
+import { MenuItem } from "@prisma/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Edit, Loader, Plus, Search, Trash } from "lucide-react";
 import Image from "next/image";

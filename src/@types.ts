@@ -1,6 +1,5 @@
 import { z } from "zod";
-import { Prisma } from "../prisma/generated/prisma";
-import { getOrders } from "./actions/orders";
+import { Prisma } from "@prisma/client";
 
 export const MenuFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),

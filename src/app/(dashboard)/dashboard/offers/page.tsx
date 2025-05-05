@@ -33,7 +33,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import UploadImage from "@/components/upload-image";
-import { Offer } from "../../../../../prisma/generated/prisma";
+import { Offer } from "@prisma/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { useForm } from "react-hook-form";

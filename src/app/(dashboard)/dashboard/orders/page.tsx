@@ -32,7 +32,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { OrderStatus } from "../../../../../prisma/generated/prisma";
+import { OrderStatus } from "@prisma/client";
 import { DateFormat } from "@/lib/utils";
 import Image from "next/image";
 import { toast } from "sonner";

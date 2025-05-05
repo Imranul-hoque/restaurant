@@ -37,7 +37,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import UploadImage from "@/components/upload-image";
-import { Event } from "../../../../../prisma/generated/prisma";
+import { Event } from "@prisma/client";
 import { DateFormat } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
